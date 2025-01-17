@@ -1,222 +1,221 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import {
-    Box,
-    AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-    InputBase,
-    Checkbox,
-    Badge,
-} from "@mui/material";
-import {
-    Search as SearchIcon,
-    MoreVert as MoreVertIcon,
-    ViewColumn as ViewColumnIcon,
-    Sort as SortIcon,
-    ShoppingBag as ShoppingBagIcon,
-    Menu as MenuIcon,
-} from "@mui/icons-material";
+  AppBar,
+  Box,
+  Button,
+  Divider,
+  Grid,
+  IconButton,
+  MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Toolbar,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    marginTop: theme.spacing(2),
+  },
+  headerButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  tabButton: {
+    marginRight: theme.spacing(2),
+  },
+  formControl: {
+    marginBottom: theme.spacing(2),
+    minWidth: "100%",
+  },
+}));
 
 const App: React.FC = () => {
-    return (
-        <Box sx={{ display: "flex", height: "100vh", bgcolor: "grey.100" }}>
-            {/* Sidebar */}
-            <Box
-                sx={{
-                    width: 64,
-                    bgcolor: "white",
-                    borderRight: "1px solid #e0e0e0",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    py: 2,
-                }}
-            >
-                <Box
-                    sx={{
-                        bgcolor: "blue.100",
-                        p: 1,
-                        borderRadius: "8px",
-                        mb: 1,
-                    }}
-                >
-                    <ShoppingBagIcon sx={{ color: "blue.600" }} />
-                </Box>
-                <Typography
-                    variant="caption"
-                    sx={{ color: "blue.600", textAlign: "center" }}
-                >
-                    Comp-Shop
-                </Typography>
-            </Box>
+  const classes = useStyles();
 
-            {/* Main Content */}
-            <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
-                {/* Header */}
-                <AppBar
-                    position="static"
-                    elevation={0}
-                    sx={{ bgcolor: "white", borderBottom: "1px solid #e0e0e0" }}
-                >
-                    <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                            <IconButton edge="start">
-                                <MenuIcon sx={{ color: "grey.600" }} />
-                            </IconButton>
-                            <Typography variant="h6" color="text.primary">
-                                Competitive Shop
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                width: 32,
-                                height: 32,
-                                bgcolor: "grey.200",
-                                borderRadius: "50%",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Typography color="grey.600">A</Typography>
-                        </Box>
-                    </Toolbar>
-                </AppBar>
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <Button color="primary" variant="contained" className={classes.headerButton}>
+            Stephanie S
+          </Button>
+          <Typography variant="h6" className={classes.title}>
+            Manage Shops - Full Screen - Summary
+          </Typography>
+          <Button color="primary">← Back to Shops</Button>
+          <Button>← Prev</Button>
+          <Typography variant="body1">Shop ID 1234</Typography>
+          <Button color="primary">Next →</Button>
+          <IconButton>
+            <span className="material-icons">help_outline</span>
+          </IconButton>
+          <IconButton>
+            <span className="material-icons">history</span>
+          </IconButton>
+          <IconButton>
+            <span className="material-icons">apps</span>
+          </IconButton>
+          <Typography variant="body1">A</Typography>
+        </Toolbar>
+      </AppBar>
 
-                {/* Tabs */}
-                <Box
-                    sx={{
-                        bgcolor: "white",
-                        borderBottom: "1px solid #e0e0e0",
-                        display: "flex",
-                        px: 2,
-                        gap: 2,
-                    }}
-                >
-                    <Button
-                        variant="text"
-                        sx={{
-                            borderBottom: "2px solid",
-                            borderColor: "blue.600",
-                            color: "blue.600",
-                            textTransform: "none",
-                        }}
-                    >
-                        Shops
-                    </Button>
-                    <Button variant="text" sx={{ color: "grey.600", textTransform: "none" }}>
-                        Review{" "}
-                        <Badge
-                            badgeContent={20}
-                            color="error"
-                            sx={{ ml: 1, "& .MuiBadge-badge": { fontSize: "0.75rem" } }}
-                        />
-                    </Button>
-                </Box>
-
-                {/* Content */}
-                <Box sx={{ p: 2 }}>
-                    <Paper elevation={1} sx={{ p: 2 }}>
-                        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-                            <Box sx={{ position: "relative" }}>
-                                <SearchIcon
-                                    sx={{
-                                        position: "absolute",
-                                        top: "50%",
-                                        left: 8,
-                                        transform: "translateY(-50%)",
-                                        color: "grey.400",
-                                    }}
-                                />
-                                <InputBase
-                                    placeholder="Search for shop details"
-                                    sx={{
-                                        pl: 5,
-                                        pr: 2,
-                                        py: 0.5,
-                                        bgcolor: "grey.100",
-                                        borderRadius: "8px",
-                                        width: 300,
-                                    }}
-                                />
-                            </Box>
-                            <Box sx={{ display: "flex", gap: 1 }}>
-                                <IconButton>
-                                    <MoreVertIcon />
-                                </IconButton>
-                                <Button
-                                    variant="outlined"
-                                    startIcon={<ViewColumnIcon />}
-                                    sx={{ textTransform: "none" }}
-                                >
-                                    Columns
-                                </Button>
-                            </Box>
-                        </Box>
-
-                        {/* Table */}
-                        <TableContainer>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell padding="checkbox">
-                                            <Checkbox />
-                                        </TableCell>
-                                        <TableCell>Shop ID</TableCell>
-                                        <TableCell>Description</TableCell>
-                                        <TableCell>
-                                            Status <SortIcon fontSize="small" />
-                                        </TableCell>
-                                        <TableCell>Archive</TableCell>
-                                        <TableCell>
-                                            Campaign <SortIcon fontSize="small" />
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {[...Array(15)].map((_, i) => (
-                                        <TableRow key={i}>
-                                            <TableCell padding="checkbox">
-                                                <Checkbox defaultChecked={i < 4} />
-                                            </TableCell>
-                                            <TableCell>1234</TableCell>
-                                            <TableCell>line-01: placeholder</TableCell>
-                                            <TableCell>
-                                                <Box
-                                                    sx={{
-                                                        px: 1,
-                                                        py: 0.5,
-                                                        borderRadius: "8px",
-                                                        display: "inline-block",
-                                                        fontSize: "0.75rem",
-                                                        bgcolor: i < 3 ? "yellow.100" : "green.100",
-                                                        color: i < 3 ? "yellow.800" : "green.800",
-                                                    }}
-                                                >
-                                                    {i < 3 ? "In Review" : "Complete"}
-                                                </Box>
-                                            </TableCell>
-                                            <TableCell>{i === 2 ? "01/01/2025" : "01/03/2025"}</TableCell>
-                                            <TableCell>NE Regional</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Paper>
-                </Box>
-            </Box>
+      <Paper className={classes.paper}>
+        <Box mb={2}>
+          <Button color="primary" className={classes.tabButton}>
+            Summary
+          </Button>
+          <Button className={classes.tabButton}>Stores</Button>
+          <Button className={classes.tabButton}>Items</Button>
+          <Button className={classes.tabButton}>Comments</Button>
         </Box>
-    );
+        <Divider />
+
+        <Box mt={2} mb={2} display="flex" justifyContent="space-between">
+          <Typography>
+            This shop is currently: <Typography component="span" color="primary">In Process</Typography>
+          </Typography>
+          <Button variant="contained" color="primary">
+            Actions
+          </Button>
+        </Box>
+
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Typography variant="h6" gutterBottom>
+              Key details
+            </Typography>
+            <TextField
+              label="Shop Description"
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              value="Q1 New England Drug Regional"
+            />
+            <TextField
+              label="Shop ID"
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              value="1234"
+            />
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  label="Created"
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                  value="01/01/2025"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Field Date"
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                  value="01/03/2025"
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  label="Stores"
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                  value="15"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Items"
+                  fullWidth
+                  variant="outlined"
+                  margin="normal"
+                  value="215"
+                />
+              </Grid>
+            </Grid>
+            <Select
+              fullWidth
+              variant="outlined"
+              className={classes.formControl}
+              value="All"
+            >
+              <MenuItem value="All">All</MenuItem>
+            </Select>
+            <Select
+              fullWidth
+              variant="outlined"
+              className={classes.formControl}
+              value="Regular"
+            >
+              <MenuItem value="Regular">Regular</MenuItem>
+            </Select>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Typography variant="h6" gutterBottom>
+              Vendor
+            </Typography>
+            <Select
+              fullWidth
+              variant="outlined"
+              className={classes.formControl}
+              value="Nielsen"
+            >
+              <MenuItem value="Nielsen">Nielsen</MenuItem>
+            </Select>
+            <TextField
+              label="Note to Vendor"
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              value="Please complete ASAP."
+            />
+            <Typography variant="h6" gutterBottom style={{ marginTop: "2rem" }}>
+              Optional details
+            </Typography>
+            <Select
+              fullWidth
+              variant="outlined"
+              className={classes.formControl}
+              value="New England Pharmacy 1"
+            >
+              <MenuItem value="New England Pharmacy 1">New England Pharmacy 1</MenuItem>
+            </Select>
+            <Select
+              fullWidth
+              variant="outlined"
+              className={classes.formControl}
+              value="Planogram 1"
+            >
+              <MenuItem value="Planogram 1">Planogram 1</MenuItem>
+            </Select>
+          </Grid>
+        </Grid>
+
+        <Box mt={4} display="flex" justifyContent="center">
+          <Button startIcon={<span className="material-icons">refresh</span>}>
+            Re-center Shift+2
+          </Button>
+        </Box>
+      </Paper>
+    </div>
+  );
 };
 
-export default App;
+ReactDOM.render(<App />, document.getElementById("root"));
